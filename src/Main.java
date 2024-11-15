@@ -9,7 +9,7 @@ public class Main {
         };
         try {
             Users[1].validateUser();
-        } catch (Exception e) {
+        } catch (RuntimeException e) {
             System.out.println("Ошибка валидации: " + e.getMessage());
         } finally {
             System.out.println("Процесс валидации завершен.");
