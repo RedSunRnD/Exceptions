@@ -4,7 +4,7 @@ import exceptions.WrongPasswordException;
 public class Main {
     public static void main(String[] args) {
         String login = "TheBestLogin";
-        String password = "HardPassword_03";
+        String password = "HardPassword_01";
         String confirmPassword = "HardPassword_01";
 
         try {
@@ -16,14 +16,18 @@ public class Main {
         }
     }
 
+    public static boolean checkLoginData(String loginData) {
+        return loginData == null || loginData.length() > 20 || !loginData.matches("^[a-zA-Z0-9_]+$");
+    }
+
     public static void validateUser(String login, String password, String confirmPassword)
             throws WrongLoginException, WrongPasswordException {
 
-        if (login == null || login.length() > 20 || !login.matches("[a-zA-Z0-9_]+")) {
+        if (checkLoginData(login)) {
             throw new WrongLoginException("Логин должен содержать только латинские буквы, цифры и знак подчеркивания, и быть не длиннее 20 символов.");
         }
 
-        if (password == null || password.length() > 20 || !password.matches("[a-zA-Z0-9_]+")) {
+        if (checkLoginData(password)) {
             throw new WrongPasswordException("Пароль должен содержать только латинские буквы, цифры и знак подчеркивания, и быть не длиннее 20 символов.");
         }
 
