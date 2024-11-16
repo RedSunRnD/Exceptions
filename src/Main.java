@@ -9,8 +9,9 @@ public class Main {
 
         try {
             validateUser(login, password, confirmPassword);
-        } catch (RuntimeException e) {
+        } catch (WrongLoginException | WrongPasswordException e) {
             System.out.println("Ошибка валидации: " + e.getMessage());
+        } catch (RuntimeException e) {
         } finally {
             System.out.println("Процесс валидации завершен.");
         }
