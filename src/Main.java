@@ -9,6 +9,8 @@ public class Main {
         };
         try {
             Users[1].validateUser();
+        } catch (WrongLoginException | WrongPasswordException e) {
+            System.out.println("Ошибка валидации: " + e.getMessage());
         } catch (RuntimeException e) {
             System.out.println("Ошибка валидации: " + e.getMessage());
         } finally {
